@@ -45,3 +45,19 @@ const onClick = e => {
     }
 };
 galleryRef.addEventListener('click', onClick);
+
+
+
+
+// const createMarkup = ({ original, preview, description }) => {
+//     return `<div class="gallery__item"><a href=${original} class="gallery__link">
+//   <img class="gallery__image" src=${preview} alt=${description} />
+// </a></div>
+// `;
+// };
+
+// const markup = galleryItems.map((item) => createMarkup(item)).join('');
+
+// const renderMarkup = (strings) => {
+//     galleryRef.insertAdjacentHTML('beforeend', strings);
+// };
