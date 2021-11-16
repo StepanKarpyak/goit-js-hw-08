@@ -32,10 +32,7 @@ const createMarkup = ({ original, preview, description }) => {
 </a></div>
 `;
 };
-// const markup = galleryItems.map((item) => createMarkup(item)).join('');
-// const renderMarkup = (strings) => {
-//     galleryRef.insertAdjacentHTML('beforeend', strings);
-// };
+
 const markup = galleryItems.map((item) => createMarkup(item)).join('');
 const renderMarkup = (strings) => {
     galleryRef.insertAdjacentHTML('beforeend', strings);
