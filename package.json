@@ -1,32 +1,32 @@
 {
-  "name": "parcel-project-template",
+  "name": "goit-hw-08",
   "version": "1.1.0",
   "description": "",
   "main": "index.js",
-  "homepage": "https://github.com/StepanKarpyak/goit-js-hw-08/",
+  "homepage": "https://StepanKarpyak.github.io/goit-js-hw-08/",
   "scripts": {
     "dev": "parcel src/index.html --open",
     "build": "parcel build src/*.html --public-url /goit-js-hw-08/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/StepanKarpyak/goit-js-hw-08.git"
+    "url": "https://github.com/StepanKarpyak/goit-js-hw-08"
   },
   "keywords": [],
-  "author": "Stepan Karpyak <stepan_karpyak@ukr.net>",
+  "author": "StepanKarpyak <stepan_karpyak@ukr.net>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/StepanKarpyak/goit-js-hw-08/issues"
+    "url": "https://github.com/goitacademy/parcel-project-template/issues"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.5",
     "parcel-plugin-handlebars-precompile": "^1.0.2",
     "parcel-plugin-nuke-dist": "^1.0.1",
-    "posthtml-include": "^1.7.2",
-    "sass": "^1.43.4"
+    "posthtml-include": "^1.6.2",
+    "sass": "^1.32.8"
   },
   "dependencies": {
     "lodash.throttle": "^4.1.1",
-    "simplelightbox": "^2.10.1"
+    "simplelightbox": "^2.9.0"
   }
 }

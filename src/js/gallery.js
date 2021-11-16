@@ -1,3 +1,4 @@
+import { Console } from 'console';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 // Add imports above this line
@@ -52,17 +53,17 @@ const lightbox = new SimpleLightbox('.gallery a', {
     captionDelay: 500,
 });
 
-const onClick = (e) => {
-    e.preventDefault();
-    if (e.target.nodeName !== 'IMG') {
-        return;
-    } else {
-        lightbox.open(e.target);
-    }
-};
-galleryRef.addEventListener('click', onClick);
+// const onClick = (e) => {
+//     e.preventDefault();
+//     if (e.target.nodeName !== 'IMG') {
+//         return;
+//     } else {
+//         lightbox.open(e.target);
+//     }
+// };
+// galleryRef.addEventListener('click', onClick);
 
 
-
+console.log(SimpleLightbox)
 
 
