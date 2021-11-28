@@ -8,60 +8,52 @@
 // Зроби так, щоб сховище оновлювалось не частіше, ніж раз на 500 мілісекунд.Для цього додай
 //  до проекту і використовуй бібліотеку lodash.throttle.
 
+import throttle from 'lodash.throttle';
 
-const throttle = require('lodash.throttle');
+// const storage_Key = 'feedback-form-state';
 
-const formRef = document.querySelector('.feedback-form');
-
-const FORM_FIELDS_KEY = 'feedback-form-state';
+const formRef = document.querySelector('form');
 const email = formRef.elements.email;
 const message = formRef.elements.message;
 
-const onFormInput = e => {
-    const userData = {
-        userMail: email.value,
-        userMessage: message.value,
+const FORM_FIELDS_KEY = 'feedback-form-state';
+// const FORM_MESSAGE_KEY = 'feedback-message-state'
+
+
+
+const onInput = e => {
+    const formData = {
+        mail: email.value,
+        message: message.value,
     };
-    localStorage.setItem(FORM_FIELDS_KEY, JSON.stringify(userData));
+    localStorage.setItem(FORM_FIELDS_KEY, JSON.stringify(formData));
 };
 
-const throttled = throttle(onFormInput, 500);
+// const throttled = throttle(onFormInput, 500);
 
-const storageValuesLogger = () => {
-    const values = localStorage.getItem(FORM_FIELDS_KEY);
-    const parsedValues = JSON.parse(values);
-    const storageObj = {
-        email: parsedValues.userMail,
-        message: parsedValues.userMessage,
-    };
-    console.log(storageObj);
+const getFormLS = () => {
+    const parsedData = JSON.parse(localStorage.getItem(FORM_FIELDS_KEY));
+
+    if (!parsedData) return;
+
+    email.value = parsedData.mail,
+        message.value = parsedData.message;
 };
+getFormLS();
 
-const onFormSubmit = e => {
-
+const onSubmit = e => {
     e.preventDefault();
-    try {
-        console.log(localStorage.getItem(FORM_FIELDS_KEY));
-        storageValuesLogger();
-        e.currentTarget.reset();
-        localStorage.removeItem(FORM_FIELDS_KEY);
-    } catch (error) {
-        return alert('всі поля повинні бути заповнені!')
+
+    if (!email.value || !message.value) {
+        return alert('всі поля повинні бути заповнені!');
     }
 
+    console.log({ email: email.value, message: message.value });
+
+    formRef.reset();
+    localStorage.removeItem(FORM_FIELDS_KEY);
 };
 
-const populateTextMessage = () => {
-    const currentInputValues = localStorage.getItem(FORM_FIELDS_KEY);
-    if (currentInputValues) {
-        const parsedInputValues = JSON.parse(currentInputValues);
+formRef.addEventListener('input', throttle(onInput, 500));
 
-        email.value = parsedInputValues.userMail;
-        message.value = parsedInputValues.userMessage;
-    }
-};
-
-populateTextMessage();
-
-formRef.addEventListener('input', throttled);
-formRef.addEventListener('submit', onFormSubmit);
+formRef.addEventListener('submit', onSubmit);
